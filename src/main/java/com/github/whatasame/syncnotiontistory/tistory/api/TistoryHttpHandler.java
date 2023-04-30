@@ -44,6 +44,19 @@ public class TistoryHttpHandler {
                 .getAsJsonObject("item");
     }
 
+    private Response getResponse(String url) throws IOException {
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        Response response = client.newCall(request).execute();
+        if (response.code() != 200) {
+            throw new HttpRetryException("정상 접근이 아님", response.code());
+        }
+
+        return response;
+    }
+
     public JsonArray getBlogInfo() throws IOException {
         String getParamsUrl = Objects.requireNonNull(HttpUrl.parse(EndPoints.BLOG_INFO.URL))
                 .newBuilder()
@@ -51,14 +64,7 @@ public class TistoryHttpHandler {
                 .addQueryParameter("output", "json")
                 .toString();
 
-        Request request = new Request.Builder()
-                .url(getParamsUrl)
-                .build();
-
-        Response response = client.newCall(request).execute();
-        if (response.code() != 200) {
-            throw new HttpRetryException("정상 접근이 아님", response.code());
-        }
+        Response response = getResponse(getParamsUrl);
 
         return getItem(response)
                 .getAsJsonArray("blogs");
