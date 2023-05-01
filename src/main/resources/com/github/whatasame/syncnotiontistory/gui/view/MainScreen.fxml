@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="196.0"
+            prefWidth="385.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.github.whatasame.syncnotiontistory.gui.controller.MainScreenController">
+    <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="23.0" layoutY="23.0"
+               pickOnBounds="true" preserveRatio="true">
+        <Image url="@tistory-logo.png"/>
+    </ImageView>
+    <Label fx:id="tistoryBlogNameLabel" layoutX="80.0" layoutY="23.0" prefHeight="23.0" prefWidth="286.0"
+           text="블로그제목블로그제목블로그제목블로그제목블로그제목블로그제목블로그제목블로그제목">
+        <font>
+            <Font size="18.0"/>
+        </font>
+    </Label>
+    <Label fx:id="tistoryEmailLabel" layoutX="80.0" layoutY="50.0" text="tistory@tistory.com"/>
+    <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="23.0" layoutY="87.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@notion-logo.png"/>
+    </ImageView>
+    <Label fx:id="notionDatabaseNameLabel" layoutX="80.0" layoutY="87.0" prefHeight="23.0" prefWidth="286.0"
+           text="데이터베이스이름데이터베이스이름">
+        <font>
+            <Font size="18.0"/>
+        </font>
+    </Label>
+    <Label fx:id="notionEmailLabel" layoutX="80.0" layoutY="114.0" text="notion@notion.com"/>
+    <Button fx:id="settingButton" layoutX="27.0" layoutY="149.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0"
+            minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0"
+            style="-fx-background-color: null;">
+        <graphic>
+            <ImageView>
+                <Image url="@setting.png"/>
+            </ImageView>
+        </graphic>
+        <font>
+            <Font size="7.0"/>
+        </font>
+    </Button>
+    <Button fx:id="syncButton" layoutX="306.0" layoutY="149.0" mnemonicParsing="false" text="Sync"/>
+    <Button fx:id="tistoryConnectionRefreshButton" layoutX="193.0" layoutY="49.0" maxHeight="15.0" maxWidth="15.0"
+            minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0"
+            style="-fx-background-color: null;">
+        <graphic>
+            <ImageView>
+                <Image url="@refresh.png"/>
+            </ImageView>
+        </graphic>
+        <font>
+            <Font size="7.0"/>
+        </font>
+    </Button>
+    <Button fx:id="notionConnectionRefreshButton" layoutX="193.0" layoutY="113.0" maxHeight="15.0" maxWidth="15.0"
+            minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0"
+            style="-fx-background-color: null;">
+        <graphic>
+            <ImageView>
+                <Image url="@refresh.png"/>
+            </ImageView>
+        </graphic>
+        <font>
+            <Font size="7.0"/>
+        </font>
+    </Button>
+</AnchorPane>
