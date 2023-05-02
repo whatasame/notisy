@@ -1,9 +1,13 @@
 package com.github.whatasame.syncnotiontistory.gui.controller;
 
 import com.github.whatasame.syncnotiontistory.gui.view.MainApplication;
+import com.github.whatasame.syncnotiontistory.tistory.api.TistoryHttpHandler;
+import com.github.whatasame.syncnotiontistory.tistory.model.TistoryBlog;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+
+import java.io.IOException;
 
 public class MainScreenController {
 
@@ -13,7 +17,7 @@ public class MainScreenController {
     private Label tistoryBlogNameLabel;
 
     @FXML
-    private Label tistoryEmailLabel;
+    private Label tistoryNicknameLabel;
 
     @FXML
     private Label notionDatabaseNameLabel;
@@ -40,5 +44,14 @@ public class MainScreenController {
     public void initialize() {
     }
 
+    public void handleTistoryConnectionRefreshButtonAction() {
+        try {
+            TistoryBlog defaultBlog = new TistoryHttpHandler().getDefaultBlog();
+            tistoryBlogNameLabel.setText(defaultBlog.getTitle());
+            tistoryNicknameLabel.setText(defaultBlog.getNickname());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
