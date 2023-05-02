@@ -23,8 +23,7 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-//    mainModule = 'com.github.whatasame.syncnotiontistory'
-    mainClass = 'com.github.whatasame.syncnotiontistory.gui.view.BlogInfo'
+    mainClass = 'com.github.whatasame.syncnotiontistory.gui.view.MainApplication'
 }
 
 javafx {
