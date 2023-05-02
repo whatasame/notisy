@@ -8,16 +8,16 @@ import java.util.Map;
 
 public class KeyManager {
 
-
     private final File keyFile;
     public static final String KEY_FILE_PATH = "key.json";
     private static Map<String, String> keyMap;
 
     public KeyManager() {
         this.keyFile = new File(KEY_FILE_PATH);
+        loadKeyFile();
     }
 
-    public void loadKeyFile() {
+    private void loadKeyFile() {
         if (!keyFile.exists()) {
             setDefaultKeyMap();
             return;
@@ -56,7 +56,7 @@ public class KeyManager {
     private void setDefaultKeyMap() {
         keyMap = new HashMap<>();
         for (Key KEY : Key.values()) {
-            keyMap.put(KEY.getKeyName(), "");
+            keyMap.put(KEY.getName(), "");
         }
     }
 
