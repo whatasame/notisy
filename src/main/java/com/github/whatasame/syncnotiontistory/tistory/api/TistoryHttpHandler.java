@@ -12,7 +12,6 @@ import okhttp3.Response;
 
 import java.io.IOException;
 import java.net.HttpRetryException;
-import java.util.Objects;
 
 public class TistoryHttpHandler {
 
@@ -29,44 +28,37 @@ public class TistoryHttpHandler {
 
     private final String ACCESS_TOKEN;
     private final Gson gson = new Gson();
-    private final OkHttpClient client = new OkHttpClient();
+    private final OkHttpClient okHttpClient = new OkHttpClient();
 
     public TistoryHttpHandler() {
         this.ACCESS_TOKEN = new KeyManager().getKey(Key.TISTORY_ACCESS_TOKEN.getName());
     }
 
-    private JsonObject getItem(Response response) throws IOException {
-        return gson.fromJson(
-                        Objects.requireNonNull(response.body()).string(),
-                        JsonObject.class
-                )
-                .getAsJsonObject("tistory")
-                .getAsJsonObject("item");
-    }
+    private JsonObject sendRequest(Request request) throws IOException {
+        try (Response response = okHttpClient.newCall(request).execute()) {
+            if (!response.isSuccessful()) {
+                throw new HttpRetryException(response.message(), response.code());
+            }
 
-    private Response getResponse(String url) throws IOException {
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-
-        Response response = client.newCall(request).execute();
-        if (response.code() != 200) {
-            throw new HttpRetryException("정상 접근이 아님", response.code());
+            String responseBody = response.body().string();
+            return gson.fromJson(responseBody, JsonObject.class);
         }
-
-        return response;
     }
 
     public JsonArray getBlogInfo() throws IOException {
-        String getParamsUrl = Objects.requireNonNull(HttpUrl.parse(EndPoints.BLOG_INFO.URL))
+        String httpUrl = HttpUrl.parse(EndPoints.BLOG_INFO.URL)
                 .newBuilder()
                 .addQueryParameter("access_token", ACCESS_TOKEN)
                 .addQueryParameter("output", "json")
                 .toString();
 
-        Response response = getResponse(getParamsUrl);
+        Request request = new Request.Builder()
+                .url(httpUrl)
+                .build();
 
-        return getItem(response)
+        return sendRequest(request)
+                .getAsJsonObject("tistory")
+                .getAsJsonObject("item")
                 .getAsJsonArray("blogs");
     }
 
