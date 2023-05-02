@@ -2,8 +2,10 @@ package com.github.whatasame.syncnotiontistory.tistory.api;
 
 import com.github.whatasame.syncnotiontistory.key.Key;
 import com.github.whatasame.syncnotiontistory.key.KeyManager;
+import com.github.whatasame.syncnotiontistory.tistory.model.TistoryBlog;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
@@ -45,7 +47,7 @@ public class TistoryHttpHandler {
         }
     }
 
-    public JsonArray getBlogInfo() throws IOException {
+    public TistoryBlog getDefaultBlog() throws IOException {
         String httpUrl = HttpUrl.parse(EndPoints.BLOG_INFO.URL)
                 .newBuilder()
                 .addQueryParameter("access_token", ACCESS_TOKEN)
@@ -56,10 +58,21 @@ public class TistoryHttpHandler {
                 .url(httpUrl)
                 .build();
 
-        return sendRequest(request)
+        JsonArray blogs = sendRequest(request)
                 .getAsJsonObject("tistory")
                 .getAsJsonObject("item")
                 .getAsJsonArray("blogs");
+
+        for (JsonElement element : blogs) {
+            if (element instanceof JsonObject) {
+                JsonObject blog = (JsonObject) element;
+                if (blog.get("default").getAsString().equals("Y")) {
+                    return gson.fromJson(blog, TistoryBlog.class);
+                }
+            }
+        }
+
+        return null;
     }
 
 }

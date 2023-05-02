@@ -1,11 +1,11 @@
 package com.github.whatasame.syncnotiontistory.tistory.api;
 
-import com.google.gson.JsonArray;
+import com.github.whatasame.syncnotiontistory.tistory.model.TistoryBlog;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import java.io.IOException;
 
 class TistoryHttpHandlerTest {
 
@@ -17,10 +17,12 @@ class TistoryHttpHandlerTest {
     }
 
     @Test
-    void 유효한_키로_블로그_정보_가져오기() {
-        JsonArray blogs = assertDoesNotThrow(tistoryHttpHandler::getBlogInfo);
+    void 대표_블로그_정보_가져오기() throws IOException {
+        TistoryBlog defaultBlog = tistoryHttpHandler.getDefaultBlog();
 
-        assertFalse(blogs.isEmpty());
+        Assertions.assertNotNull(defaultBlog);
+
+        System.out.println(defaultBlog);
     }
 
 }
