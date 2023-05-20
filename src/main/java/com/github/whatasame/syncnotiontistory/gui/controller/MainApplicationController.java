@@ -4,12 +4,11 @@ import com.github.whatasame.syncnotiontistory.gui.view.MainApplication;
 import com.github.whatasame.syncnotiontistory.tistory.api.TistoryHttpHandler;
 import com.github.whatasame.syncnotiontistory.tistory.model.TistoryBlog;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import java.io.IOException;
 
-public class MainScreenController {
+public class MainApplicationController {
 
     private MainApplication mainApplication;
 
@@ -25,23 +24,12 @@ public class MainScreenController {
     @FXML
     private Label notionEmailLabel;
 
-    @FXML
-    private Button tistoryConnectionRefreshButton;
-
-    @FXML
-    private Button notionConnectionRefreshButton;
-
-    @FXML
-    private Button settingButton;
-
-    @FXML
-    private Button syncButton;
-
     public void setMainApp(MainApplication mainApplication) {
         this.mainApplication = mainApplication;
     }
 
-    public void initialize() {
+    public void handleSettingButtonAction() {
+        mainApplication.openSettingWindow();
     }
 
     public void handleTistoryConnectionRefreshButtonAction() {
