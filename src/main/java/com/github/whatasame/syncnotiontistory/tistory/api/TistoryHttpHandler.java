@@ -33,7 +33,8 @@ public class TistoryHttpHandler {
     private final OkHttpClient okHttpClient = new OkHttpClient();
 
     public TistoryHttpHandler() {
-        this.ACCESS_TOKEN = new KeyManager().getKey(Key.TISTORY_ACCESS_TOKEN.getName());
+        KeyManager keyManager = new KeyManager();
+        this.ACCESS_TOKEN = keyManager.readKey(Key.TISTORY_ACCESS_TOKEN);
     }
 
     private JsonObject sendRequest(Request request) throws IOException {
