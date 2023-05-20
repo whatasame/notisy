@@ -1,6 +1,8 @@
 package com.github.whatasame.syncnotiontistory.key;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 import java.io.*;
 import java.util.HashMap;
@@ -8,56 +10,76 @@ import java.util.Map;
 
 public class KeyManager {
 
-    private final File keyFile;
-    public static final String KEY_FILE_PATH = "key.json";
-    private static Map<String, String> keyMap;
+    public static final String KEY_FILE = "key.json";
+    private Map<Key, String> keyData;
 
     public KeyManager() {
-        this.keyFile = new File(KEY_FILE_PATH);
-        loadKeyFile();
+        loadKeys();
     }
 
-    private void loadKeyFile() {
-        if (!keyFile.exists()) {
-            setDefaultKeyMap();
-            return;
-        }
+    private void loadKeys() {
+        try (Reader reader = new FileReader(KEY_FILE)) {
+            Gson gson = new Gson();
+            JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
 
-        try (BufferedReader br = new BufferedReader(new FileReader(this.keyFile))) {
-            StringBuilder sb = new StringBuilder();
-
-            String line;
-            while ((line = br.readLine()) != null) {
-                sb.append(line);
+            /* Json 데이터 유효성 검증 */
+            boolean isValid = true;
+            this.keyData = new HashMap<>();
+            for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
+                try {
+                    Key key = Key.valueOf(entry.getKey());
+                    String value = entry.getValue().getAsString();
+                    keyData.put(key, value);
+                } catch (IllegalArgumentException e) {
+                    isValid = false;
+                    e.printStackTrace();
+                }
             }
 
-            keyMap = new Gson().fromJson(sb.toString(), Map.class);
+            if (!isValid) { // 유효하지 않은 키 초기화
+                for (Key key : Key.values()) {
+                    if (!keyData.containsKey(key)) {
+                        keyData.put(key, "");
+                    }
+                }
+                saveKeys();
+            }
+
+        } catch (FileNotFoundException e) {
+            this.keyData = getDefaultKeyData();
+            saveKeys();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void saveKeyFile() {
-        try (FileWriter writer = new FileWriter(this.keyFile)) {
-            writer.write(new Gson().toJson(keyMap));
+
+    public void saveKeys() {
+        try (Writer writer = new FileWriter(KEY_FILE)) {
+            Gson gson = new Gson();
+            gson.toJson(this.keyData, writer);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public String getKey(String key) {
-        return keyMap.get(key);
+    public String readKey(Key key) {
+        return keyData.get(key);
     }
 
-    public void setKey(String key, String value) {
-        keyMap.put(key, value);
+    public void updateKey(Key key, String keyValue) {
+        this.keyData.put(key, keyValue);
+        saveKeys();
     }
 
-    private void setDefaultKeyMap() {
-        keyMap = new HashMap<>();
-        for (Key KEY : Key.values()) {
-            keyMap.put(KEY.getName(), "");
+    /**
+     * @return Key enum들을 Key로, 빈 문자열을 Value로 갖는 Map 생성
+     */
+    private Map<Key, String> getDefaultKeyData() {
+        Map<Key, String> tmp = new HashMap<>();
+        for (Key key : Key.values()) {
+            tmp.put(key, "");
         }
+        return tmp;
     }
-
 }
