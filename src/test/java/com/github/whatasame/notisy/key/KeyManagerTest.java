@@ -1,4 +1,4 @@
-package com.github.whatasame.syncnotiontistory.key;
+package com.github.whatasame.notisy.key;
 
 import com.google.gson.Gson;
 import org.junit.jupiter.api.AfterAll;
@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.github.whatasame.syncnotiontistory.key.Key.NOTION_TOKEN;
-import static com.github.whatasame.syncnotiontistory.key.Key.TISTORY_ACCESS_TOKEN;
+import static com.github.whatasame.notisy.key.Key.NOTION_TOKEN;
+import static com.github.whatasame.notisy.key.Key.TISTORY_ACCESS_TOKEN;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 

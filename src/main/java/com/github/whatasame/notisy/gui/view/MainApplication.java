@@ -1,7 +1,7 @@
-package com.github.whatasame.syncnotiontistory.gui.view;
+package com.github.whatasame.notisy.gui.view;
 
-import com.github.whatasame.syncnotiontistory.gui.controller.MainApplicationController;
-import com.github.whatasame.syncnotiontistory.gui.controller.SettingWindowController;
+import com.github.whatasame.notisy.gui.controller.MainApplicationController;
+import com.github.whatasame.notisy.gui.controller.SettingWindowController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

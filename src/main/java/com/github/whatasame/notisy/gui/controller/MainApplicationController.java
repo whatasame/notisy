@@ -1,8 +1,8 @@
-package com.github.whatasame.syncnotiontistory.gui.controller;
+package com.github.whatasame.notisy.gui.controller;
 
-import com.github.whatasame.syncnotiontistory.gui.view.MainApplication;
-import com.github.whatasame.syncnotiontistory.tistory.api.TistoryHttpHandler;
-import com.github.whatasame.syncnotiontistory.tistory.model.TistoryBlog;
+import com.github.whatasame.notisy.gui.view.MainApplication;
+import com.github.whatasame.notisy.tistory.api.TistoryHttpHandler;
+import com.github.whatasame.notisy.tistory.model.TistoryBlog;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 

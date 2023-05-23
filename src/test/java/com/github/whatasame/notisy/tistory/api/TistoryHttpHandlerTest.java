@@ -1,6 +1,6 @@
-package com.github.whatasame.syncnotiontistory.tistory.api;
+package com.github.whatasame.notisy.tistory.api;
 
-import com.github.whatasame.syncnotiontistory.tistory.model.TistoryBlog;
+import com.github.whatasame.notisy.tistory.model.TistoryBlog;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,5 +24,4 @@ class TistoryHttpHandlerTest {
 
         System.out.println(defaultBlog);
     }
-
 }

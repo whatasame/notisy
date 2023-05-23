@@ -1,4 +1,4 @@
-package com.github.whatasame.syncnotiontistory.key;
+package com.github.whatasame.notisy.key;
 
 public enum Key {
     TISTORY_ACCESS_TOKEN("TISTORY_ACCESS_TOKEN"),

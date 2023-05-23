@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <AnchorPane prefHeight="167.0" prefWidth="413.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.github.whatasame.syncnotiontistory.gui.controller.SettingWindowController">
+            fx:controller="com.github.whatasame.notisy.gui.controller.SettingWindowController">
     <Button fx:id="tistoryAccessTokenButton" layoutX="343.0" layoutY="50.0"
             onAction="#handleTistoryAccessTokenButtonAction" text="save"/>
     <TextField fx:id="tistoryAccessToken" layoutX="21.0" layoutY="50.0" prefHeight="25.0" prefWidth="314.0"/>

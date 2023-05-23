@@ -1,12 +1,12 @@
-package com.github.whatasame.syncnotiontistory.gui.controller;
+package com.github.whatasame.notisy.gui.controller;
 
-import com.github.whatasame.syncnotiontistory.key.KeyManager;
+import com.github.whatasame.notisy.key.KeyManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import static com.github.whatasame.syncnotiontistory.key.Key.NOTION_TOKEN;
-import static com.github.whatasame.syncnotiontistory.key.Key.TISTORY_ACCESS_TOKEN;
+import static com.github.whatasame.notisy.key.Key.NOTION_TOKEN;
+import static com.github.whatasame.notisy.key.Key.TISTORY_ACCESS_TOKEN;
 
 public class SettingWindowController {
 

@@ -6,7 +6,7 @@
 <?import javafx.scene.text.*?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="196.0"
             prefWidth="385.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.github.whatasame.syncnotiontistory.gui.controller.MainApplicationController">
+            fx:controller="com.github.whatasame.notisy.gui.controller.MainApplicationController">
     <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="23.0" layoutY="23.0"
                pickOnBounds="true" preserveRatio="true">
         <Image url="@tistory-logo.png"/>

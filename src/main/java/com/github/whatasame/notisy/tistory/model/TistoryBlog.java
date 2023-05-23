@@ -1,4 +1,4 @@
-package com.github.whatasame.syncnotiontistory.tistory.model;
+package com.github.whatasame.notisy.tistory.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

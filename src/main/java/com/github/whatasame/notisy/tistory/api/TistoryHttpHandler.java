@@ -1,8 +1,8 @@
-package com.github.whatasame.syncnotiontistory.tistory.api;
+package com.github.whatasame.notisy.tistory.api;
 
-import com.github.whatasame.syncnotiontistory.key.Key;
-import com.github.whatasame.syncnotiontistory.key.KeyManager;
-import com.github.whatasame.syncnotiontistory.tistory.model.TistoryBlog;
+import com.github.whatasame.notisy.key.Key;
+import com.github.whatasame.notisy.key.KeyManager;
+import com.github.whatasame.notisy.tistory.model.TistoryBlog;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;

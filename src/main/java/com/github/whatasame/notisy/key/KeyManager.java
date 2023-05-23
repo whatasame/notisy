@@ -1,4 +1,4 @@
-package com.github.whatasame.syncnotiontistory.key;
+package com.github.whatasame.notisy.key;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
