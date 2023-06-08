@@ -39,6 +39,9 @@ public class MainApplicationController {
         AppConfig appConfig = new AppConfig();
         keyManager = appConfig.keyManager();
         databaseService = appConfig.databaseService();
+
+        refreshTistoryConnection();
+        refreshNotionConnection();
     }
 
     public void setMainApp(MainApplication mainApplication) {
@@ -50,6 +53,14 @@ public class MainApplicationController {
     }
 
     public void handleTistoryConnectionRefreshButtonAction() {
+        refreshTistoryConnection();
+    }
+
+    public void handleRefreshConnectionRefreshButtonAction() {
+        refreshNotionConnection();
+    }
+
+    private void refreshTistoryConnection() {
         try {
             TistoryBlog defaultBlog = new TistoryHttpHandler().getDefaultBlog();
             tistoryBlogNameLabel.setText(defaultBlog.getTitle());
@@ -59,7 +70,7 @@ public class MainApplicationController {
         }
     }
 
-    public void handleRefreshConnectionRefreshButtonAction() {
+    private void refreshNotionConnection() {
         String databaseName = keyManager.readKey(DATABASE_NAME);
 
         DatabaseSearchResult database = databaseService.searchDatabase(databaseName);
