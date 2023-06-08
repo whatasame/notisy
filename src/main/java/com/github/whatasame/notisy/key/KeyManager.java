@@ -14,7 +14,7 @@ public class KeyManager {
     private Map<Key, String> keyData;
 
     public KeyManager() {
-        loadKeys();
+        /* no-op */
     }
 
     private void loadKeys() {
@@ -54,7 +54,7 @@ public class KeyManager {
     }
 
 
-    public void saveKeys() {
+    private void saveKeys() {
         try (Writer writer = new FileWriter(KEY_FILE)) {
             Gson gson = new Gson();
             gson.toJson(this.keyData, writer);
@@ -64,6 +64,7 @@ public class KeyManager {
     }
 
     public String readKey(Key key) {
+        loadKeys();
         return keyData.get(key);
     }
 
