@@ -5,8 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import static com.github.whatasame.notisy.key.Key.NOTION_TOKEN;
-import static com.github.whatasame.notisy.key.Key.TISTORY_ACCESS_TOKEN;
+import static com.github.whatasame.notisy.key.Key.*;
 
 public class SettingWindowController {
 
@@ -21,10 +20,14 @@ public class SettingWindowController {
     private TextField notionToken;
 
     @FXML
+    private TextField databaseTitle;
+
+    @FXML
     private void initialize() {
         keyManager = new KeyManager();
         tistoryAccessToken.setText(keyManager.readKey(TISTORY_ACCESS_TOKEN));
         notionToken.setText(keyManager.readKey(NOTION_TOKEN));
+        databaseTitle.setText(keyManager.readKey(DATABASE_NAME));
     }
 
     public void handleTistoryAccessTokenButtonAction() {
@@ -33,6 +36,10 @@ public class SettingWindowController {
 
     public void handleNotionTokenButtonAction() {
         keyManager.updateKey(NOTION_TOKEN, notionToken.getText());
+    }
+
+    public void handleDatabaseTitleButtonAction() {
+        keyManager.updateKey(DATABASE_NAME, databaseTitle.getText());
     }
 
     public void setPopupStage(Stage popupStage) {
