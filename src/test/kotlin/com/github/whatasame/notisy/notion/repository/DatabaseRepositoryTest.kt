@@ -5,13 +5,13 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
-class NotionDatabaseRepositoryTest {
+class DatabaseRepositoryTest {
 
-    private lateinit var notionDatabaseRepository: NotionDatabaseRepository
+    private lateinit var databaseRepository: DatabaseRepository
 
     @BeforeEach
     fun beforeEach() {
-        notionDatabaseRepository = NotionDatabaseRepository()
+        databaseRepository = DatabaseRepository()
     }
 
     @Test
@@ -22,7 +22,7 @@ class NotionDatabaseRepositoryTest {
 
         /* then */
         assertDoesNotThrow {
-            notionDatabaseRepository.findByTitle(title) // when
+            databaseRepository.findByTitle(title) // when
         }
     }
 

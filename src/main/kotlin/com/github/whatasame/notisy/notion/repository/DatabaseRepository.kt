@@ -7,7 +7,7 @@ import notion.api.v1.model.search.SearchResult
 import notion.api.v1.request.search.SearchRequest
 
 
-class NotionDatabaseRepository {
+class DatabaseRepository {
 
     fun findByTitle(title: String): DatabaseSearchResult {
         val client = NotionClientManager.getClient()
