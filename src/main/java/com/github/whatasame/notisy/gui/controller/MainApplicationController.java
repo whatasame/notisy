@@ -1,6 +1,8 @@
 package com.github.whatasame.notisy.gui.controller;
 
+import com.github.whatasame.notisy.gui.config.AppConfig;
 import com.github.whatasame.notisy.gui.view.MainApplication;
+import com.github.whatasame.notisy.key.KeyManager;
 import com.github.whatasame.notisy.tistory.api.TistoryHttpHandler;
 import com.github.whatasame.notisy.tistory.model.TistoryBlog;
 import javafx.fxml.FXML;
@@ -19,10 +21,19 @@ public class MainApplicationController {
     private Label tistoryNicknameLabel;
 
     @FXML
-    private Label notionDatabaseNameLabel;
+    private Label notionDatabaseTitleLabel;
 
     @FXML
-    private Label notionEmailLabel;
+    private Label notionDatabaseDescriptionLabel;
+
+    private KeyManager keyManager;
+
+
+    @FXML
+    private void initialize() {
+        AppConfig appConfig = new AppConfig();
+        keyManager = appConfig.keyManager();
+    }
 
     public void setMainApp(MainApplication mainApplication) {
         this.mainApplication = mainApplication;

@@ -1,5 +1,6 @@
 package com.github.whatasame.notisy.gui.controller;
 
+import com.github.whatasame.notisy.gui.config.AppConfig;
 import com.github.whatasame.notisy.key.KeyManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -24,7 +25,9 @@ public class SettingWindowController {
 
     @FXML
     private void initialize() {
-        keyManager = new KeyManager();
+        AppConfig appConfig = new AppConfig();
+        keyManager = appConfig.keyManager();
+
         tistoryAccessToken.setText(keyManager.readKey(TISTORY_ACCESS_TOKEN));
         notionToken.setText(keyManager.readKey(NOTION_TOKEN));
         databaseTitle.setText(keyManager.readKey(DATABASE_NAME));
