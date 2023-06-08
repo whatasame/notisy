@@ -3,12 +3,16 @@ package com.github.whatasame.notisy.gui.controller;
 import com.github.whatasame.notisy.gui.config.AppConfig;
 import com.github.whatasame.notisy.gui.view.MainApplication;
 import com.github.whatasame.notisy.key.KeyManager;
+import com.github.whatasame.notisy.notion.service.DatabaseService;
 import com.github.whatasame.notisy.tistory.api.TistoryHttpHandler;
 import com.github.whatasame.notisy.tistory.model.TistoryBlog;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import notion.api.v1.model.search.DatabaseSearchResult;
 
 import java.io.IOException;
+
+import static com.github.whatasame.notisy.key.Key.DATABASE_NAME;
 
 public class MainApplicationController {
 
@@ -28,11 +32,13 @@ public class MainApplicationController {
 
     private KeyManager keyManager;
 
+    private DatabaseService databaseService;
 
     @FXML
     private void initialize() {
         AppConfig appConfig = new AppConfig();
         keyManager = appConfig.keyManager();
+        databaseService = appConfig.databaseService();
     }
 
     public void setMainApp(MainApplication mainApplication) {
@@ -51,6 +57,15 @@ public class MainApplicationController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void handleRefreshConnectionRefreshButtonAction() {
+        String databaseName = keyManager.readKey(DATABASE_NAME);
+
+        DatabaseSearchResult database = databaseService.searchDatabase(databaseName);
+
+        notionDatabaseDescriptionLabel.setText(databaseService.getDescription(database));
+        notionDatabaseTitleLabel.setText(databaseService.getTitle(database));
     }
 
 }

@@ -22,13 +22,13 @@
                preserveRatio="true">
         <Image url="@notion-logo.png"/>
     </ImageView>
-    <Label fx:id="notionDatabaseNameLabel" layoutX="80.0" layoutY="87.0" prefHeight="23.0" prefWidth="286.0"
+    <Label fx:id="notionDatabaseTitleLabel" layoutX="80.0" layoutY="87.0" prefHeight="23.0" prefWidth="286.0"
            text="데이터 베이스 이름">
         <font>
             <Font size="18.0"/>
         </font>
     </Label>
-    <Label fx:id="notionEmailLabel" layoutX="80.0" layoutY="114.0" text="notion@notion.com"/>
+    <Label fx:id="notionDatabaseDescriptionLabel" layoutX="80.0" layoutY="114.0" text="notion@notion.com"/>
     <Button fx:id="settingButton" layoutX="27.0" layoutY="149.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0"
             minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0"
             style="-fx-background-color: null;"
@@ -58,7 +58,8 @@
     </Button>
     <Button fx:id="notionConnectionRefreshButton" layoutX="193.0" layoutY="113.0" maxHeight="15.0" maxWidth="15.0"
             minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0"
-            style="-fx-background-color: null;">
+            style="-fx-background-color: null;"
+            onAction="#handleRefreshConnectionRefreshButtonAction">
         <graphic>
             <ImageView>
                 <Image url="@refresh.png"/>
