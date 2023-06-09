@@ -4,13 +4,14 @@ import com.github.whatasame.notisy.gui.config.AppConfig;
 import com.github.whatasame.notisy.gui.view.MainApplication;
 import com.github.whatasame.notisy.key.KeyManager;
 import com.github.whatasame.notisy.notion.service.DatabaseService;
-import com.github.whatasame.notisy.tistory.api.TistoryHttpHandler;
-import com.github.whatasame.notisy.tistory.model.TistoryBlog;
+import com.github.whatasame.notisy.tistory.api.exception.TistoryException;
+import com.github.whatasame.notisy.tistory.api.model.Blog;
+import com.github.whatasame.notisy.tistory.service.BlogService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import notion.api.v1.model.search.DatabaseSearchResult;
 
-import java.io.IOException;
+import java.util.Optional;
 
 import static com.github.whatasame.notisy.key.Key.DATABASE_NAME;
 
@@ -32,6 +33,8 @@ public class MainApplicationController {
 
     private KeyManager keyManager;
 
+    private BlogService blogService;
+
     private DatabaseService databaseService;
 
     @FXML
@@ -39,6 +42,7 @@ public class MainApplicationController {
         AppConfig appConfig = new AppConfig();
         keyManager = appConfig.keyManager();
         databaseService = appConfig.databaseService();
+        blogService = appConfig.blogService();
 
         refreshTistoryConnection();
         refreshNotionConnection();
@@ -61,13 +65,14 @@ public class MainApplicationController {
     }
 
     private void refreshTistoryConnection() {
-        try {
-            TistoryBlog defaultBlog = new TistoryHttpHandler().getDefaultBlog();
-            tistoryBlogNameLabel.setText(defaultBlog.getTitle());
-            tistoryNicknameLabel.setText(defaultBlog.getNickname());
-        } catch (IOException e) {
-            e.printStackTrace();
+        Optional<Blog> result = blogService.getDefaultBlog();
+        if (result.isEmpty()) {
+            throw new TistoryException("기본 블로그가 없습니다.");
         }
+
+        Blog defaultBlog = result.get();
+        tistoryBlogNameLabel.setText(defaultBlog.title());
+        tistoryNicknameLabel.setText(defaultBlog.nickname());
     }
 
     private void refreshNotionConnection() {
