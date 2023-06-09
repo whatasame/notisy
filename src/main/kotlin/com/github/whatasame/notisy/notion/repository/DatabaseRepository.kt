@@ -9,19 +9,18 @@ import notion.api.v1.request.search.SearchRequest
 
 class DatabaseRepository {
 
-    fun findByTitle(title: String): DatabaseSearchResult {
+    fun findByTitle(title: String): DatabaseSearchResult? {
         val client = NotionClientManager.getClient()
 
         return client
-            .search(
-                query = title,
-                filter = SearchRequest.SearchFilter(value = "database", property = "object")
-            )
-            .results
-            .find {
-                validateProperties(it)
-            }?.asDatabase()
-            ?: error("Notisy database를 찾을 수 없습니다. API 연결 혹은 데이터 베이스의 이름과 속성을 확인해주세요. ")
+                .search(
+                        query = title,
+                        filter = SearchRequest.SearchFilter(value = "database", property = "object")
+                )
+                .results
+                .find {
+                    validateProperties(it)
+                }?.asDatabase()
     }
 
     private fun validateProperties(searchResult: SearchResult): Boolean {

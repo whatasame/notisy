@@ -1,5 +1,6 @@
-package com.github.whatasame.notisy.notion.repository
+package com.github.whatasame.notisy.notion.service
 
+import com.github.whatasame.notisy.notion.repository.DatabaseRepository
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
@@ -7,11 +8,12 @@ import org.junit.jupiter.api.Test
 
 class DatabaseRepositoryTest {
 
-    private lateinit var databaseRepository: DatabaseRepository
+
+    private lateinit var databaseService: DatabaseService
 
     @BeforeEach
     fun beforeEach() {
-        databaseRepository = DatabaseRepository()
+        databaseService = DatabaseService(DatabaseRepository())
     }
 
     @Test
@@ -22,7 +24,7 @@ class DatabaseRepositoryTest {
 
         /* then */
         assertDoesNotThrow {
-            databaseRepository.findByTitle(title) // when
+            databaseService.searchDatabase(title) // when
         }
     }
 
