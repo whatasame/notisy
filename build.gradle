@@ -65,5 +65,5 @@ jlinkZip {
     group = 'distribution'
 }
 kotlin {
-    jvmToolchain(11)
+    jvmToolchain(17)
 }
