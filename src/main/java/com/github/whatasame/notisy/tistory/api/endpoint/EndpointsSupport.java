@@ -6,6 +6,7 @@ import java.util.Map;
 
 /**
  * API reference
+ * <p>
  * https://tistory.github.io/document-tistory-apis/apis/
  */
 public interface EndpointsSupport {
