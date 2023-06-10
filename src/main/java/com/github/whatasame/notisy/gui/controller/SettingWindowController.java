@@ -24,6 +24,9 @@ public class SettingWindowController {
     private TextField databaseTitle;
 
     @FXML
+    private TextField categoryName;
+
+    @FXML
     private void initialize() {
         AppConfig appConfig = new AppConfig();
         keyManager = appConfig.keyManager();
@@ -31,6 +34,7 @@ public class SettingWindowController {
         tistoryAccessToken.setText(keyManager.readKey(TISTORY_ACCESS_TOKEN));
         notionToken.setText(keyManager.readKey(NOTION_TOKEN));
         databaseTitle.setText(keyManager.readKey(DATABASE_NAME));
+        categoryName.setText(keyManager.readKey(CATEGORY_NAME));
     }
 
     public void handleTistoryAccessTokenButtonAction() {
@@ -44,6 +48,11 @@ public class SettingWindowController {
     public void handleDatabaseTitleButtonAction() {
         keyManager.updateKey(DATABASE_NAME, databaseTitle.getText());
     }
+
+    public void handleCategoryNameButtonAction() {
+        keyManager.updateKey(CATEGORY_NAME, categoryName.getText());
+    }
+
 
     public void setPopupStage(Stage popupStage) {
         this.popupStage = popupStage;

@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<AnchorPane prefHeight="219.0" prefWidth="413.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.whatasame.notisy.gui.controller.SettingWindowController">
-    <Button fx:id="tistoryAccessTokenButton" layoutX="343.0" layoutY="50.0" onAction="#handleTistoryAccessTokenButtonAction" text="save" />
-    <TextField fx:id="tistoryAccessToken" layoutX="21.0" layoutY="50.0" prefHeight="25.0" prefWidth="314.0" />
-    <Label layoutX="21.0" layoutY="27.0" text="TISTORY_ACCESS_TOKEN" />
-    <Button fx:id="notionTokenButton" layoutX="343.0" layoutY="109.0" onAction="#handleNotionTokenButtonAction" text="save" />
-    <TextField fx:id="notionToken" layoutX="21.0" layoutY="109.0" prefHeight="25.0" prefWidth="314.0" />
-    <Label layoutX="21.0" layoutY="86.0" text="NOTION_TOKEN" />
-    <Button fx:id="databaseTitleButton" layoutX="343.0" layoutY="169.0" onAction="#handleDatabaseTitleButtonAction" text="save" />
-    <TextField fx:id="databaseTitle" layoutX="21.0" layoutY="169.0" prefHeight="25.0" prefWidth="314.0" />
-    <Label layoutX="21.0" layoutY="146.0" text="데이터베이스 제목" />
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane prefHeight="280.0" prefWidth="413.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.github.whatasame.notisy.gui.controller.SettingWindowController">
+    <Button fx:id="tistoryAccessTokenButton" layoutX="343.0" layoutY="50.0"
+            onAction="#handleTistoryAccessTokenButtonAction" text="save"/>
+    <TextField fx:id="tistoryAccessToken" layoutX="21.0" layoutY="50.0" prefHeight="25.0" prefWidth="314.0"/>
+    <Label layoutX="21.0" layoutY="27.0" text="TISTORY_ACCESS_TOKEN"/>
+    <Button fx:id="notionTokenButton" layoutX="343.0" layoutY="109.0" onAction="#handleNotionTokenButtonAction"
+            text="save"/>
+    <TextField fx:id="notionToken" layoutX="21.0" layoutY="109.0" prefHeight="25.0" prefWidth="314.0"/>
+    <Label layoutX="21.0" layoutY="86.0" text="NOTION_TOKEN"/>
+    <Button fx:id="databaseTitleButton" layoutX="343.0" layoutY="169.0" onAction="#handleDatabaseTitleButtonAction"
+            text="save"/>
+    <TextField fx:id="databaseTitle" layoutX="21.0" layoutY="169.0" prefHeight="25.0" prefWidth="314.0"/>
+    <Label layoutX="21.0" layoutY="146.0" text="데이터베이스 제목"/>
+    <Button fx:id="categoryNameButton" layoutX="343.0" layoutY="229.0" onAction="#handleCategoryNameButtonAction"
+            text="save"/>
+    <TextField fx:id="categoryName" layoutX="21.0" layoutY="229.0" prefHeight="25.0" prefWidth="314.0"/>
+    <Label layoutX="21.0" layoutY="206.0" text="카테고리 이름"/>
 </AnchorPane>
