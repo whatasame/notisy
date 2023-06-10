@@ -27,7 +27,7 @@ public class PostTest {
         Assertions.assertNotNull(categoryId, "카테고리 아이디 환경 변수를 확인해주세요");
 
         /* when */
-        String postId = tistoryClient.writePost(blogName, categoryId, title, content);
+        String postId = tistoryClient.writePost(blogName, title, content, categoryId);
 
         /* then */
         Assertions.assertNotNull(postId);

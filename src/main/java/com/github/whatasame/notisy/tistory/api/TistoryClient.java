@@ -46,7 +46,7 @@ public class TistoryClient implements BlogSupport, CategorySupport, PostSupport 
         );
     }
 
-    public String writePost(String blogName, String categoryId, String title, String content) {
+    public String writePost(String blogName, String title, String content, String categoryId) {
         return writePost(
                 defaultHttpClient,
                 defaultJsonSerializer,
@@ -54,9 +54,9 @@ public class TistoryClient implements BlogSupport, CategorySupport, PostSupport 
                 Map.of(
                         "access_token", List.of(token),
                         "blogName", List.of(blogName),
-                        "categoryId", List.of(categoryId),
                         "title", List.of(title),
-                        "content", List.of(content)
+                        "content", List.of(content),
+                        "category", List.of(categoryId)
                 )
         );
     }
