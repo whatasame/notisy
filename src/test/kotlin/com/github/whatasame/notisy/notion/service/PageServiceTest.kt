@@ -1,5 +1,6 @@
 package com.github.whatasame.notisy.notion.service
 
+import com.github.whatasame.notisy.notion.NotionClientManager
 import com.github.whatasame.notisy.notion.repository.PageRepository
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
@@ -27,6 +28,22 @@ class PageServiceTest {
         /* then */
         assertNotEquals(0, pages.size)
 
+    }
+
+    @Test
+    @DisplayName("[포스트 정보 업데이트] 특정 페이지의 포스트 아이디 정보를 업데이트한다")
+    fun test_02() {
+        /* given */
+        val client = NotionClientManager.getClient()
+        val target = client.retrievePage("da36c270d65f4092a71e57762f6f35ac")
+        val value = "12"
+
+        /* when */
+        val updatedPage = pageService.updatePostId(target, value)
+
+
+        /* then */
+        assertEquals(target.id, updatedPage.id)
     }
 
 }
