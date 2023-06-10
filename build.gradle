@@ -47,6 +47,8 @@ dependencies {
 
     // https://mvnrepository.com/artifact/com.google.code.gson/gson
     implementation 'com.google.code.gson:gson:2.10.1'
+
+    implementation("com.github.seratch:notion-sdk-jvm-okhttp4:1.8.0")
 }
 
 test {
