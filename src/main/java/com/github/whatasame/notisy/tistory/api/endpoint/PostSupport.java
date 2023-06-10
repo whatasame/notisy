@@ -37,4 +37,25 @@ public interface PostSupport extends EndpointsSupport {
             throw new TistoryException("포스트 작성 실패: " + httpResponse.body());
         }
     }
+
+    default String modifyPost(
+            TistoryHttpClient httpClient,
+            TistoryJsonSerializer jsonSerializer,
+            String baseUrl,
+            Map<String, List<String>> params
+    ) {
+        TistoryHttpResponse httpResponse =
+                httpClient.post(
+                        baseUrl + "/post/modify",
+                        buildRequestParams(params),
+                        Collections.emptyMap()
+                );
+
+        if (httpResponse.status() == 200) {
+            TistoryResponse tistoryResponse = jsonSerializer.toTistoryResponse(httpResponse.body());
+            return tistoryResponse.tistory().postId();
+        } else {
+            throw new TistoryException("포스트 수정 실패: " + httpResponse.body());
+        }
+    }
 }

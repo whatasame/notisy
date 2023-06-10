@@ -60,4 +60,20 @@ public class TistoryClient implements BlogSupport, CategorySupport, PostSupport 
                 )
         );
     }
+
+    public String modifyPost(String blogName, String title, String content, String categoryId, String postId) {
+        return modifyPost(
+                defaultHttpClient,
+                defaultJsonSerializer,
+                defaultBaseUrl,
+                Map.of(
+                        "access_token", List.of(token),
+                        "blogName", List.of(blogName),
+                        "postId", List.of(postId),
+                        "title", List.of(title),
+                        "content", List.of(content),
+                        "category", List.of(categoryId)
+                )
+        );
+    }
 }
