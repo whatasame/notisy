@@ -13,21 +13,21 @@ class DatabaseRepository {
         val client = NotionClientManager.getClient()
 
         return client
-                .search(
-                        query = title,
-                        filter = SearchRequest.SearchFilter(value = "database", property = "object")
-                )
-                .results
-                .find {
-                    validateProperties(it)
-                }?.asDatabase()
+            .search(
+                query = title,
+                filter = SearchRequest.SearchFilter(value = "database", property = "object")
+            )
+            .results
+            .find {
+                validateProperties(it)
+            }?.asDatabase()
     }
 
     private fun validateProperties(searchResult: SearchResult): Boolean {
         val properties = searchResult.asDatabase().properties
 
         for (notisyProperty in NotisyProperty.values()) {
-            if (!properties.containsKey("[Notisy] " + notisyProperty.value)) {
+            if (!properties.containsKey(notisyProperty.value)) {
                 return false
             }
         }
