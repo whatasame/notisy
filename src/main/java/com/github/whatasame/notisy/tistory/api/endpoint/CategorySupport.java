@@ -30,7 +30,7 @@ public interface CategorySupport extends EndpointsSupport {
             TistoryResponse tistoryResponse = jsonSerializer.toTistoryResponse(httpResponse.body());
             return tistoryResponse.tistory().item().categories();
         } else {
-            throw new TistoryException("블로그 조회 실패");
+            throw new TistoryException("카테고리 조회 실패: " + httpResponse.body());
         }
     }
 
