@@ -42,6 +42,30 @@ public class HttpUrlConnTistoryHttpClient implements TistoryHttpClient {
         }
     }
 
+    /**
+     * Post 요청이지만 Tistory API에서는 body를 넣지 않고 param에서 모든 것을 해결한다.
+     */
+    @Override
+    public TistoryHttpResponse post(String url, Map<String, List<String>> query, Map<String, String> headers) {
+        String q = buildQueryString(query);
+        String fullUrl = buildFullUrl(url, q);
+        HttpURLConnection conn = buildConnectionObject(fullUrl, headers);
+        try {
+            conn.setRequestMethod("POST"); // HTTP Method만 다르다.
+            try (InputStream input = connect(conn)) {
+                return new TistoryHttpResponse(
+                        conn.getResponseCode(),
+                        readResponseBody(input),
+                        conn.getHeaderFields()
+                );
+            }
+        } catch (Exception e) {
+            throw new TistoryException(e.getMessage());
+        } finally {
+            disconnect(conn);
+        }
+    }
+
     private HttpURLConnection buildConnectionObject(String fullUrl, Map<String, String> headers) {
         try {
             HttpURLConnection conn = (HttpURLConnection) new URL(fullUrl).openConnection();

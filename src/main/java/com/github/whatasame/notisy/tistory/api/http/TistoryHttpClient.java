@@ -11,6 +11,8 @@ public interface TistoryHttpClient {
 
     TistoryHttpResponse get(String url, Map<String, List<String>> query, Map<String, String> headers);
 
+    TistoryHttpResponse post(String url, Map<String, List<String>> query, Map<String, String> headers);
+
     default String urlEncode(String value) {
         return URLEncoder.encode(value, UTF_8);
     }
@@ -28,6 +30,5 @@ public interface TistoryHttpClient {
     default String buildFullUrl(String url, String q) {
         return url + (q.equals("?") ? "" : q);
     }
-
 
 }
