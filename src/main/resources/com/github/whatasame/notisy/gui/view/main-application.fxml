@@ -59,7 +59,7 @@
     </Button>
     <Button fx:id="notionConnectionRefreshButton" layoutX="335.0" layoutY="115.0" maxHeight="15.0" maxWidth="15.0"
             minHeight="15.0" minWidth="15.0" mnemonicParsing="false"
-            onAction="#handleRefreshConnectionRefreshButtonAction" prefHeight="15.0" prefWidth="15.0"
+            onAction="#handleNotionConnectionRefreshButtonAction" prefHeight="15.0" prefWidth="15.0"
             style="-fx-background-color: null;">
         <graphic>
             <ImageView>

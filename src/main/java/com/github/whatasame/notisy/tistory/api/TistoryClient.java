@@ -15,8 +15,8 @@ import java.util.Map;
 
 public class TistoryClient implements BlogSupport, CategorySupport, PostSupport {
 
-    public static final String defaultBaseUrl = "https://www.tistory.com/apis";
-    public static final TistoryHttpClient defaultHttpClient = new HttpUrlConnTistoryHttpClient();
+    private static final String defaultBaseUrl = "https://www.tistory.com/apis";
+    private static final TistoryHttpClient defaultHttpClient = new HttpUrlConnTistoryHttpClient();
     private static final TistoryJsonSerializer defaultJsonSerializer = new TistoryGsonSerializer();
 
     private final String token;

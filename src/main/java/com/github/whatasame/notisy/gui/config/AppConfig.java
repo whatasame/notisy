@@ -60,10 +60,10 @@ public class AppConfig {
     // ------------------------------
 
     public DatabaseService databaseService() {
-        return new DatabaseService(notionDatabaseRepository());
+        return new DatabaseService(databaseRepostiory());
     }
 
-    public DatabaseRepository notionDatabaseRepository() {
+    public DatabaseRepository databaseRepostiory() {
         return new DatabaseRepository();
     }
 

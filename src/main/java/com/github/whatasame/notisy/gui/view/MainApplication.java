@@ -33,7 +33,7 @@ public class MainApplication extends Application {
             mainApplicationController.setMainApp(this);
 
             Scene scene = new Scene(mainScreen);
-            primaryStage.setTitle("Sync Tistory Notion");
+            primaryStage.setTitle("Notisy");
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
             primaryStage.show();

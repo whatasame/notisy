@@ -37,6 +37,10 @@ public class SettingWindowController {
         categoryName.setText(keyManager.readKey(CATEGORY_NAME));
     }
 
+    public void setPopupStage(Stage popupStage) {
+        this.popupStage = popupStage;
+    }
+
     public void handleTistoryAccessTokenButtonAction() {
         keyManager.updateKey(TISTORY_ACCESS_TOKEN, tistoryAccessToken.getText());
     }
@@ -53,8 +57,4 @@ public class SettingWindowController {
         keyManager.updateKey(CATEGORY_NAME, categoryName.getText());
     }
 
-
-    public void setPopupStage(Stage popupStage) {
-        this.popupStage = popupStage;
-    }
 }

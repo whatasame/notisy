@@ -72,7 +72,7 @@ public class MainApplicationController {
         refreshTistoryConnection();
     }
 
-    public void handleRefreshConnectionRefreshButtonAction() {
+    public void handleNotionConnectionRefreshButtonAction() {
         refreshNotionConnection();
     }
 

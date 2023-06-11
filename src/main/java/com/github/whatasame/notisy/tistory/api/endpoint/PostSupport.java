@@ -20,8 +20,8 @@ public interface PostSupport extends EndpointsSupport {
     default String writePost(
             TistoryHttpClient httpClient,
             TistoryJsonSerializer jsonSerializer,
-            String baseUrl, Map<String,
-            List<String>> params
+            String baseUrl,
+            Map<String, List<String>> params
     ) {
         TistoryHttpResponse httpResponse =
                 httpClient.post(
