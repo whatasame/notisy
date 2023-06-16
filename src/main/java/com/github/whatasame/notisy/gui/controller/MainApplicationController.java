@@ -77,28 +77,40 @@ public class MainApplicationController {
     }
 
     public void handleSyncButtonAction() {
-        DatabaseSearchResult database = databaseService.searchDatabase(keyManager.readKey(DATABASE_NAME));
-        List<Page> pages = pageService.getPages(database.getId());
+        try {
+            DatabaseSearchResult database = databaseService.searchDatabase(keyManager.readKey(DATABASE_NAME));
+            List<Page> pages = pageService.getPages(database.getId());
 
-        String blogName = getDefaultBlog().name();
+            String blogName = getDefaultBlog().name();
 
-        postService.syncPost(blogName, pages);
+            postService.syncPost(blogName, pages);
+        } catch (Exception e) {
+            System.out.println("error:" + e.getMessage());
+        }
     }
 
 
     private void refreshTistoryConnection() {
-        Blog defaultBlog = getDefaultBlog();
-        tistoryBlogNameLabel.setText(defaultBlog.title());
-        tistoryNicknameLabel.setText(defaultBlog.nickname());
+        try {
+            Blog defaultBlog = getDefaultBlog();
+            tistoryBlogNameLabel.setText(defaultBlog.title());
+            tistoryNicknameLabel.setText(defaultBlog.nickname());
+        } catch (Exception e) {
+            System.out.println("error:" + e.getMessage());
+        }
     }
 
     private void refreshNotionConnection() {
-        String databaseName = keyManager.readKey(DATABASE_NAME);
+        try {
+            String databaseName = keyManager.readKey(DATABASE_NAME);
 
-        DatabaseSearchResult database = databaseService.searchDatabase(databaseName);
+            DatabaseSearchResult database = databaseService.searchDatabase(databaseName);
 
-        notionDatabaseDescriptionLabel.setText(databaseService.getDescription(database));
-        notionDatabaseTitleLabel.setText(databaseService.getTitle(database));
+            notionDatabaseDescriptionLabel.setText(databaseService.getDescription(database));
+            notionDatabaseTitleLabel.setText(databaseService.getTitle(database));
+        } catch (Exception e) {
+            System.out.println("error:" + e.getMessage());
+        }
     }
 
     private Blog getDefaultBlog() {

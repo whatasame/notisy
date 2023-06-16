@@ -15,7 +15,7 @@ import java.util.Objects;
 
 public class HttpUrlConnTistoryHttpClient implements TistoryHttpClient {
 
-    private final int connectTimeoutMillis = 3_000;
+    private final int connectTimeoutMillis = 10_000;
     private final int readTimeoutMillis = 30_000;
 
     public HttpUrlConnTistoryHttpClient() {
